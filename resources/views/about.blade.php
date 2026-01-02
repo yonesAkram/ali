@@ -1,6 +1,8 @@
 <x-layout>
+
     <h1>About Us</h1>
-    <p>Anther Page.</p>
+    <p>Welcome to the about page of our application.</p>
+
 </x-layout>
 
 

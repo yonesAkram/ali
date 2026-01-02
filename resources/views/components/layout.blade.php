@@ -13,8 +13,8 @@
         <a href="/welcome">Home</a>
         <a href="/contact">contact</a>
     </nav>
-    <h1>About Us</h1>
-    <p>Welcome to the about page of our application.</p>
+
+    <?php echo $slot; ?>
 
 </body>
 
