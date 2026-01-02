@@ -9,7 +9,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/about', function () {
-    return "This is the about page.";
+    return view('about');
 });
 
 Route::get('/akram', function () {
