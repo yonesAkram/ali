@@ -9,13 +9,13 @@
 
 <body>
     <nav>
-        <a href="/about">About</a>
-        <a href="/welcome">Home</a>
-        <a href="/contact">contact</a>
+        <x-nav-link href="/about">About</x-nav-link>
+        <x-nav-link href="/welcome">Home</x-nav-link>
+        <x-nav-link href="/contact" style="color:aqua">contact</x-nav-link>
+        <x-nav-link href="#">Team</x-nav-link>
     </nav>
 
-    <?php echo $slot; ?>
-
+    {{ $slot }}
 </body>
 
 </html>
