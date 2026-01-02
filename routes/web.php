@@ -13,8 +13,8 @@ Route::get('/about', function () {
 });
 
 Route::get('/akram', function () {
-    return 'Hello, Akram!';
-})->name('akram');
+    return ['feoo' => 'bar'];
+});
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
