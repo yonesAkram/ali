@@ -15,6 +15,8 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+
+
 Route::get('/akram', function () {
     return ['feoo' => 'bar'];
 });
