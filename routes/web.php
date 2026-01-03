@@ -18,7 +18,7 @@ Route::get('/team', function () {
     return view('team');
 });
 Route::get('/', function () {
-    return view('home');
+    return view('home', ['greeting' => 'Hello, welcome to our website!']);
 });
 
 
