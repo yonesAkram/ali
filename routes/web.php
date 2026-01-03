@@ -14,7 +14,12 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
-
+Route::get('/team', function () {
+    return view('team');
+});
+Route::get('/', function () {
+    return view('home');
+});
 
 
 Route::get('/akram', function () {

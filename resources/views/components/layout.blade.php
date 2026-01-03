@@ -33,14 +33,12 @@
                     </button>
                 </div>
                 <div class="hidden lg:flex lg:gap-x-12">
-                    <a href="/about"
-                        class="{{ request()->is('/about') ? 'text-sm/6 font-semibold text-blue-500' : 'text-sm/6 font-semibold text-white' }}">
-                        About
-                    </a>
 
-                    <a href="/welcome" class="text-sm/6 font-semibold text-white">Home</a>
-                    <a href="/contact" class="text-sm/6 font-semibold text-white">Contact</a>
-                    <a href="#" class="text-sm/6 font-semibold text-white">Team</a>
+                    <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
+                    <x-nav-link href="/about" :active="request()->is('about')"> About</x-nav-link>
+                    <x-nav-link href="/contact" :active="request()->is('contact')"> About</x-nav-link>
+                    <x-nav-link href="/team" :active="request()->is('team')">Team </x-nav-link>
+
                 </div>
                 <div class="hidden lg:flex lg:flex-1 lg:justify-end">
                     <a href="#" class="text-sm/6 font-semibold text-white">Log in <span
