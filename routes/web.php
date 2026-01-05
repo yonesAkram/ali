@@ -5,11 +5,18 @@ use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
 use Illuminate\Support\Arr;
 
-$jobs = [
-    ['id' => '1', 'title' => 'Frontend Developer',   'salary' => '$50.000',  'location' => 'New York, NY'],
-    ['id' => '2', 'title' => 'Backend Developer',    'salary' => '$78.000',  'location' => 'San Francisco, CA'],
-    ['id' => '3', 'title' => 'Full Stack Developer', 'salary' => '$952.300', 'location' => 'Remote']
-];
+class job
+{
+    public static function all(): array
+    {
+        return   [
+            ['id' => '1', 'title' => 'Frontend Developer',   'salary' => '$50.000',  'location' => 'New York, NY'],
+            ['id' => '2', 'title' => 'Backend Developer',    'salary' => '$78.000',  'location' => 'San Francisco, CA'],
+            ['id' => '3', 'title' => 'Full Stack Developer', 'salary' => '$952.300', 'location' => 'Remote']
+        ];
+    }
+}
+
 
 Route::get('/welcome', function () {
     return view('welcome');
@@ -30,14 +37,14 @@ Route::get('/', function () {
 
 
 //create jobs route and use jobs array to show jobs
-Route::get('/jobs', function () use ($jobs) {
+Route::get('/jobs', function () {
 
-    return view('jobs', ['jobs' => $jobs]);
+    return view('jobs', ['jobs' => job::all()]);
 });
 
 //clear codely show job by id
-Route::get('/jobs/{id}', function ($id) use ($jobs) {
-    $job = Arr::first($jobs, fn($job) => $job['id'] == $id);
+Route::get('/jobs/{id}', function ($id) {
+    $job = Arr::first(job::all(), fn($job) => $job['id'] == $id);
 
     abort_if(!$job, 'about');
 
