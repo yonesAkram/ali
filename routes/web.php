@@ -13,7 +13,9 @@ Route::get('/welcome', function () {
 })->name('home');
 
 Route::get('/', function () {
-    $jobs = Job::all();
+    // $jobs = Job::all();
+    $jobs = Job::with('employer')->get();
+
     return view('jobs', ['jobs' => $jobs]);
 });
 
