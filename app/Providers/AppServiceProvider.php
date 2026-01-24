@@ -18,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Model::preventLazyLoading(true);
+        Model::preventLazyLoading(false);
+        // pagination::useBootstrapFive();
     }
 }

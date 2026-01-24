@@ -11,9 +11,11 @@
                     {{ $job['title'] }}: <br>Pays: {{ $job['salary'] }} per Year .
                 </div>
                 <div class="text-sm text-gray-300 text-red-500"> Located in {{ $job['location'] }} </div>
-
             </a>
         @endforeach
+        <div class="mt-4">
+            {{ $jobs->links() }}
+        </div>
     </div>
 </x-layout>
 

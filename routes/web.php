@@ -14,9 +14,8 @@ Route::get('/welcome', function () {
 
 Route::get('/', function () {
     // $jobs = Job::all();
-    $jobs = Job::with('employer')->get();
-
-    return view('jobs', ['jobs' => $jobs]);
+    // $jobs = Job::with('employer')->paginate(2);
+    return view('home');
 });
 
 Route::get('/about', function () {
@@ -36,7 +35,9 @@ Route::get('/h', function () {
 //create jobs route and use jobs array to show jobs
 Route::get('/jobs', function () {
 
-    return view('jobs', ['jobs' => job::all()]);
+    $jobs = Job::with('employer')->cursorPaginate(5);
+
+    return view('jobs', compact('jobs'));
 });
 
 //clear codely show job by id
