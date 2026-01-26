@@ -15,7 +15,7 @@ Route::get('/welcome', function () {
 Route::get('/', function () {
     // $jobs = Job::all();
     // $jobs = Job::with('employer')->paginate(2);
-    return view('home');
+    return view('about');
 });
 
 Route::get('/about', function () {
@@ -34,16 +34,34 @@ Route::get('/h', function () {
 
 //create jobs route and use jobs array to show jobs
 Route::get('/jobs', function () {
-
-    $jobs = Job::with('employer')->cursorPaginate(5);
-
-    return view('jobs', compact('jobs'));
+    $jobs = Job::with('employer')->latest()->simplePaginate(5);
+    // $jobs = Job::with('employer')->cursorPaginate(5);
+    return view('jobs.index', compact('jobs'));
 });
+
+
+// Create Jobs
+Route::get('/jobs/create', function () {
+    return view('jobs.create');
+});
+
+Route::post('/jobs', function () {
+    $attributes = request()->validate([
+        'title' => 'required|max:50',
+        'salary' => 'required|max:20',
+        'location' => 'required|max:55',
+    ]);
+
+    $job = Job::create($attributes + ['employer_id' => 1]); // Assuming employer_id is 1 for now
+
+    return redirect('/jobs');
+});
+
 
 //clear codely show job by id
 Route::get('/jobs/{id}', function ($id) {
     $job = Arr::first(job::all(), fn($job) => $job['id'] == $id);
-    return view('job', ['job' => $job]);
+    return view('jobs.show', ['job' => $job]);
 });
 
 Route::get('/akram', function () {
